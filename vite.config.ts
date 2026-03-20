@@ -8,6 +8,12 @@ import vueDevTools from "vite-plugin-vue-devtools";
 export default defineConfig({
   base: "/vue-welcome-page/",
   plugins: [vue(), vueDevTools()],
+  build: {
+    target: "es2020", // Явно укажите целевую версию ES
+  },
+  define: {
+    "process.env": {}, // Для совместимости с некоторыми плагинами
+  },
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
